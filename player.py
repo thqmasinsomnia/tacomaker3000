@@ -8,8 +8,18 @@ class Player(pygame.sprite.Sprite):
         super().__init__()
 
         # Set height, width
-        self.image = pygame.Surface([20, 40])
-        self.image.fill((0,255,0))
+
+        self.walking_frames_r = [
+            pygame.image.load('player/running_animation_0.png'),
+            pygame.image.load('player/running_animation_1.png'),
+            pygame.image.load('player/running_animation_2.png'),
+            pygame.image.load('player/running_animation_3.png'),
+            pygame.image.load('player/running_animation_4.png'),
+            pygame.image.load('player/running_animation_5.png'),
+            pygame.image.load('player/running_animation_6.png'),
+            pygame.image.load('player/running_animation_7.png')
+        ]
+        self.image = self.walking_frames_r[0]
         self.rect = self.image.get_rect()
         self.rect.center = (x / 2, y / 2)
         self.pos = vec(x / 2, y / 2)
@@ -18,6 +28,14 @@ class Player(pygame.sprite.Sprite):
         self.canJump = True
         self.walls = None
         self.playerList = []
+        self.isLeft = False
+        self.isRight = False
+        self.rightCount = 0
+        self.frame = 0
+        self.leftCount = 0
+
+
+
 
 
 
@@ -38,13 +56,37 @@ class Player(pygame.sprite.Sprite):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT]:
             self.acc.x = -0.5
+            self.isRight = False
+            self.isLeft = True
+            self.leftCount += 1
         if keys[pygame.K_RIGHT]:
             self.acc.x = 0.5
+            self.isRight = True
+            self.isLeft = False
+            self.rightCount +=1
         if keys[pygame.K_SPACE]:
             self.jump()
 
+        if self.rightCount == 5:
+            self.frame += 1
+            self.rightCount = 0
+        if self.frame == 7:
+            self.frame = 0
+        if self.isRight:
+            self.image = self.walking_frames_r[self.frame]
 
- # apply friction
+        if self.leftCount == 5:
+            self.frame += 1
+            self.leftCount = 0
+        if self.frame == 7:
+            self.frame = 0
+        if self.isLeft:
+            self.image = pygame.transform.flip(self.walking_frames_r[self.frame], True, False)
+
+
+
+
+
         self.acc.x += self.vel.x * -0.12
         # equations of motion
         self.vel += self.acc

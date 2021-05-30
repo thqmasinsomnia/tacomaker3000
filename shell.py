@@ -24,6 +24,8 @@ class Shell(Sprite):
         if col:
             self.kill()
             self.player.playerList.append('s')
+            coin = pygame.mixer.Sound('coin.ogg')
+            coin.play()
 
 
 

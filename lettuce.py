@@ -24,6 +24,8 @@ class Lettuce(Sprite):
         if col:
             self.kill()
             self.player.playerList.append('l')
+            coin = pygame.mixer.Sound('coin.ogg')
+            coin.play()
 
 
 

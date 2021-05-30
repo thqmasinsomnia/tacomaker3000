@@ -24,6 +24,8 @@ class Tomato(Sprite):
         if col:
             self.kill()
             self.player.playerList.append('t')
+            coin = pygame.mixer.Sound('coin.ogg')
+            coin.play()
 
 
 

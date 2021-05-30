@@ -22,6 +22,9 @@ class Cheese(Sprite):
         col = pygame.sprite.collide_rect(self, self.player)
 
         if col:
+            coin = pygame.mixer.Sound('coin.ogg')
+            coin.play()
+
             self.kill()
             self.player.playerList.append('c')
 

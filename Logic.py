@@ -57,11 +57,11 @@ class Logic():
                 self.wantedList.append('s')
             wantCount += 1
 
-        print(len(self.wantedList))
+
         count = 0
 
         for item in self.wantedList:
-            print("HELLO")
+
             xloc = random.randint(0, 1000)
             yloc = random.randint(100, 500)
             if item == 'c':

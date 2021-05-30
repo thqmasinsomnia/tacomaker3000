@@ -22,10 +22,14 @@ class Setup():
         self.background_image = pygame.image.load("kitchen.jpg")
         self.clock = pygame.time.Clock()
 
+        print("TACO MAKER 3000 BY THOMAS SMITH AND YUJI OSHIIRO")
+        print("RESUME - CONTACT: thomas_smith_33@yahoo.com")
+        print("MUSIC BY: windxws - ignorantwindows@gmail.com")
+
         pygame.display.flip()
         self.all_sprite_list = pygame.sprite.Group()
 
-        self.player = Player(100, 100)
+        self.player = Player(100, 1000)
         self.wall_list = pygame.sprite.Group()
 
         # bottom boundry

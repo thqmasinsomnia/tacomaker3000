@@ -24,6 +24,8 @@ class Beef(Sprite):
         if col:
             self.kill()
             self.player.playerList.append('b')
+            coin = pygame.mixer.Sound('coin.ogg')
+            coin.play()
 
 
 

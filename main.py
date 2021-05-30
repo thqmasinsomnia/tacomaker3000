@@ -27,6 +27,9 @@ class Game:
         su.create()
         log = Logic(su.screen, su.wall_list)
         log.newRound(su.player, su.all_sprite_list)
+        pygame.mixer.init()
+        pygame.mixer.music.load("theme.ogg")
+        pygame.mixer.music.play()
 
 
         su.all_sprite_list.add(log.all_sprite_list)
@@ -95,7 +98,7 @@ class Game:
 
             su.update(log.wantedList, log.round)
 
-            print(su.player.playerList)
+
             log.checkEndRound(su.player, su.sb, su.all_sprite_list)
 
 
